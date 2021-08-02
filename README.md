@@ -56,4 +56,4 @@ cluster.scale(jobs=3)
 client = Client(cluster)
 ```
 
-See [this example](`examples/hello_world`) for test scripts employed to run an executable through the Dask cluster.
+See [this example](examples/hello_world) for test scripts employed to run an executable through the Dask cluster.
