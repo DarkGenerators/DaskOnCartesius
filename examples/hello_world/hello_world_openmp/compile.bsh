@@ -1,0 +1,6 @@
+#!/bin/bash 
+
+module load 2020
+module load iccifort/2020.1.217
+
+ifort -o hello_world.x hello_world.f90 -qopenmp
