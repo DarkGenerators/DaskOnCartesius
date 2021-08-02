@@ -1,0 +1,8 @@
+#!/bin/bash
+#SBATCH -N 1
+#SBATCH -p short
+#SBATCH -t 1:00:00
+
+source ~/.bashrc
+conda activate dark_generators
+python test_cluster.py
