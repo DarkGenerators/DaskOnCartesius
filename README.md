@@ -1,3 +1,7 @@
+# Dask cluster on Cartesius
+
+The following instructions allow one to setup a Dask cluster on the [Cartesius](https://userinfo.surfsara.nl/systems/cartesius) supercomputer at [SURF](https://www.surf.nl) using [Dask-Jobqueue](https://jobqueue.dask.org/en/latest/index.html).
+
 Download and install Miniconda:
 ```shell
 wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
@@ -15,7 +19,8 @@ Activate the new environment:
 conda activate dark_generators
 ```
 
-The following snippet configure a Dask cluster with 2 workers per node (`processes=2`) and one thread per worker (`cores=2`, per node). The same python executable used to run the script will be used to start the workers. Calling `cluster.scale` submit the jobs and start the cluster:
+The following snippet configure a Dask cluster with 2 workers per node (`processes=2`) and one thread per worker (`cores=2`, per node). The same python executable used to run the script will be used to start the workers. Calling `cluster.scale` submit the jobs and start the cluster. Note that the snippet need to be run on a compute node (not on the login node).
+
 ```python
 from dask.distributed import Client
 
@@ -51,4 +56,4 @@ cluster.scale(jobs=3)
 client = Client(cluster)
 ```
 
-See `examples/hello_world` for an example used to run an executable.s
+See [this example](`examples/hello_world`) for test scripts employed to run an executable through the Dask cluster.

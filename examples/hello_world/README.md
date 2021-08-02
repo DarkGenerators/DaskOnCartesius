@@ -1,4 +1,4 @@
-# Test run with executable on Cartesius
+# Test run with an executable on Cartesius
 
 Compile the executable:
 ```shell
