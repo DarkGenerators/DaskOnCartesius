@@ -5,4 +5,8 @@
 
 source ~/.bashrc
 conda activate dark_generators
+echo "Run the following on your local system (adding -i /path/to/private/key"
+echo " if logging in with ssh key pair): "
+echo "      ssh -N -L 8787:`hostname`:8787 $USER@cartesius.surfsara.nl"
+echo "Then browse to: https://localhost:8787"
 python test_cluster.py
