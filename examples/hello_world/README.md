@@ -10,3 +10,5 @@ Modify the path to the executable in `test_cluster.py`, then submit the job scri
 ```shell
 sbatch test_cluster.bsh
 ```
+
+Follow the instructions in the stdout of the batch job script to connect to the Dask dashboard. 
