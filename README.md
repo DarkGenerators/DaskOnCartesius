@@ -57,3 +57,6 @@ client = Client(cluster)
 ```
 
 See [this example](examples/hello_world) for test scripts employed to run an executable through the Dask cluster and for instructions on how to access the Dask dashboard from your local computer.
+
+Useful resources:
+* [Pangeo on HPC guide](https://pangeo.io/setup_guides/hpc.html)
