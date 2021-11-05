@@ -1,4 +1,4 @@
-# Test run with an executable on Cartesius
+# Run a command-line program across the Dask cluster
 
 Compile the executable:
 ```shell
