@@ -1,6 +1,8 @@
-# Dask cluster on Cartesius
+# Dask cluster on Snellius
 
-The following instructions allow one to setup a Dask cluster on the [Cartesius](https://userinfo.surfsara.nl/systems/cartesius) supercomputer at [SURF](https://www.surf.nl) using [Dask-Jobqueue](https://jobqueue.dask.org/en/latest/index.html).
+The following instructions allow one to setup a Dask cluster on the [Snellius](https://servicedesk.surfsara.nl/wiki/display/WIKI/Snellius) supercomputer at [SURF](https://www.surf.nl) using [Dask-Jobqueue](https://jobqueue.dask.org/en/latest/index.html).
+
+## Install Miniconda
 
 Download and install Miniconda:
 ```shell
@@ -9,17 +11,23 @@ chmod +x Miniconda3-latest-Linux-x86_64.sh
 ./Miniconda3-latest-Linux-x86_64.sh
 ```
 
-Login/logout to activate conda. Create an environment with Dask and dask-jobque:
+Type `yes` to accept the license term, select the install location (press ENTER to accept the default ${HOME}/miniconda3), then type `yes` to initialize Miniconda3. Logout/login to activate conda. 
+
+## Install Dask
+
+Create an environment with Dask and dask-jobque:
 ```shell
 conda create -n dark_generators -c conda-forge dask dask-jobqueue ipython
 ```
+
+## Start a Dask cluster
 
 Activate the new environment:
 ```shell
 conda activate dark_generators
 ```
 
-The following snippet configure a Dask cluster with 2 workers per node (`processes=2`) and one thread per worker (`cores=2`, per node). The same python executable used to run the script will be used to start the workers. Calling `cluster.scale` submit the jobs and start the cluster. Note that the snippet need to be run on a compute node (not on the login node).
+The following snippet configure a Dask cluster with 2 workers per node (`processes=2`) and one thread per worker (`cores=2`, per node). The same python executable used to run the script  will be used to start the workers. Calling `cluster.scale` submits the jobs and actually starts the cluster. Note that this snippet needs to run on a compute node (not on the login node), e.g. via an interactive SLURM job (see [here](https://userinfo.surfsara.nl/systems/cartesius/usage/batch-usage)).
 
 ```python
 from dask.distributed import Client
@@ -56,7 +64,10 @@ cluster.scale(jobs=3)
 client = Client(cluster)
 ```
 
+## Examples
+
 See [this example](examples/hello_world) for test scripts employed to run an executable through the Dask cluster and for instructions on how to access the Dask dashboard from your local computer.
 
-Useful resources:
+## Other resources
+
 * [Pangeo on HPC guide](https://pangeo.io/setup_guides/hpc.html)
