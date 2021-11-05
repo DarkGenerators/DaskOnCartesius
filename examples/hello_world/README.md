@@ -11,4 +11,4 @@ Modify the path to the executable in `test_cluster.py`, then submit the job scri
 sbatch test_cluster.bsh
 ```
 
-Follow the instructions in the stdout of the batch job script to connect to the Dask dashboard. 
+Follow the instructions in the stdout of the batch job script (e.g. `slurm-<JOBID>.out`) to connect to the Dask dashboard. 
