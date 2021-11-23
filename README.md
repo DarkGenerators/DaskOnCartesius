@@ -2,6 +2,8 @@
 
 The following instructions allow one to setup a Dask cluster on the [Snellius](https://servicedesk.surfsara.nl/wiki/display/WIKI/Snellius) supercomputer at [SURF](https://www.surf.nl) using [Dask-Jobqueue](https://jobqueue.dask.org/en/latest/index.html).
 
+**Note**: Access to Snellius from non-white-listed IP addresses is only possible via [a separate login server](https://servicedesk.surfsara.nl/wiki/pages/viewpage.action?pageId=30660265#FAQSnellius/Lisa-HowtoconnecttotheSnelliussystemfromabroad) (or via VPN) 
+
 ## Install Miniconda
 
 Download and install Miniconda:
@@ -27,7 +29,8 @@ Activate the new environment:
 conda activate dark_generators
 ```
 
-The following snippet configure a Dask cluster with 2 workers per node (`processes=2`) and one thread per worker (`cores=2`, per node). The same python executable used to run the script  will be used to start the workers. Calling `cluster.scale` submits the jobs and actually starts the cluster. Note that this snippet needs to run on a compute node (not on the login node), e.g. via an interactive SLURM job (see [here](https://userinfo.surfsara.nl/systems/cartesius/usage/batch-usage)).
+The following snippet configure a Dask cluster with 2 workers per node (`processes=2`) and one thread per worker (`cores=2`, per node). The same python executable used to run the script  will be used to start the workers. Calling `cluster.scale` submits the jobs and actually starts the cluster. 
+**Note**: this snippet needs to run on a compute node (not on the login node), e.g. via an interactive or batch SLURM jobs (see [here](https://userinfo.surfsara.nl/systems/cartesius/usage/batch-usage)).
 
 ```python
 from dask.distributed import Client
