@@ -1,5 +1,6 @@
 #!/bin/bash
 #SBATCH -N 1
+#SBATCH -c 32
 #SBATCH -p thin    
 #SBATCH -t 1:00:00
 
@@ -11,4 +12,4 @@ echo "      ssh -N -L 8787:`hostname`:8787 $USER@snellius.surf.nl"
 echo "Then browse to: https://localhost:8787"
 # Dask will copy environment variables to the worker environment, discard SLURM-related ones
 unset ${!SLURM@} 
-python cluster.py
+python test_cluster.py
