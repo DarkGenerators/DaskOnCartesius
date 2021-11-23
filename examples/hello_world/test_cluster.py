@@ -26,11 +26,10 @@ def run_command(command):
 
 cluster = SLURMCluster(
     queue="thin",
-    memory="30GB",  # memory per node
-    processes=2,  # num workers per node
-    cores=2,  # num threads per node
-    job_mem="30GB",  # per job
-    job_cpu=24,  # per job
+    memory="60GiB",  # max memory per job
+    processes=2,  # num workers per job
+    cores=2,  # num threads per job
+    job_cpu=24,  # num cores per SLURM job (-c/--cpus-per-task)
     local_directory="$TMPDIR",
     walltime="01:00:00"
 )
@@ -47,7 +46,7 @@ print(res.compute())
 res = []
 command = ("module load 2021 &&"
            "module load iompi/2021a &&"
-           "srun -c 12 /home/username/DaskOnCartesius/examples/hello_world_openmp/hello_world.x")
+           "srun -c 16 /home/username/DaskOnSnellius/examples/hello_world/hello_world_openmp/hello_world.x")
 
 for i in range(4):
   f = client.submit(run_command, command, pure=False)
